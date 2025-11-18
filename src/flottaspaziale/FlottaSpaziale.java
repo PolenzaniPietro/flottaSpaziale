@@ -16,6 +16,10 @@ public class FlottaSpaziale {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Flotta flotta = new Flotta();
+        GestioneEvento generator = new GestioneEvento();
+        flotta.gestisciEvento(generator.randomEvent());
+        
     }
     
 }

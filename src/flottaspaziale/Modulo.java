@@ -5,6 +5,8 @@
  */
 package flottaspaziale;
 
+import java.util.Random;
+
 /**
  *
  * @author polenzani.pietro
@@ -16,6 +18,9 @@ public class Modulo {
 
     public Modulo(){
         this.salute = 100;
+        this.modulo="motore";
+        this.integrità=true;
+                
     }
     public Modulo(int salute) {
         this.salute = salute;
@@ -27,5 +32,5 @@ public class Modulo {
     public void setSalute(int salute) {
         this.salute = salute;
     }
- 
+    
 }

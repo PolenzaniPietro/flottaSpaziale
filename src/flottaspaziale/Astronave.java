@@ -16,7 +16,8 @@ public class Astronave {
     private ArrayList <MembroEquipaggio> equipaggio;
     private ArrayList <Modulo> modulo;
     private String nome;
-    private int salute;
+    public int salute;
+    private boolean ingegnere;
     // aggiunta membri dell equipaggio
     public ArrayList aggiungiMembro(MembroEquipaggio m){
         this.equipaggio.add(m);
@@ -27,7 +28,26 @@ public class Astronave {
         this.equipaggio.remove(m);
         return equipaggio;
     }
-    
+    public boolean checkIngMembers(){
+        boolean i=true;
+        for (MembroEquipaggio membro : equipaggio){
+            i = membro.controllaIng();
+            if ( i == true){
+                return i;
+            }
+                    
+        }
+        return i;
+    }
+    public boolean motoreInAvaria(){
+        int rand = new Random().nextInt(3);
+        if(rand == 3){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
     public String getNome() {
         return nome;
     }    
@@ -43,7 +63,13 @@ public class Astronave {
                 salute = 0;
             }
             return salute;
+        }
+
+    public void curaTutti() {
+        for (MembroEquipaggio membro : equipaggio){
+            membro.curaMembro();
+        }
     }
 }
-
+    
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class Flotta {
+public class Flotta extends GestioneEvento{
     private String eventi;
     private ArrayList<Astronave> astronavi;
 
@@ -24,6 +24,7 @@ public class Flotta {
         astronavi.remove(a);
         return astronavi;
     }
+    // gestione asteroidi
     public void campoAsteoidi(){
         for( Astronave astronave: astronavi ){            
             if(astronave.subisciDanno()==0){
@@ -31,7 +32,36 @@ public class Flotta {
             }
         }
     }
-    
+    // gestione motore
+    public void avariaMotore(){
+        int rnd = new Random().nextInt(astronavi.size());
+        Astronave a = astronavi.get(rnd);
+        if (a.checkIngMembers() == true) {
+            if(!a.motoreInAvaria()){
+                this.rimuoviAstronave(a);
+            }
+        }
+        else
+        {
+            this.rimuoviAstronave(a);
+        }
+        
+    }
+    // gestione cura
+    public void cura(){
+        for( Astronave astronave: astronavi ){
+            if(astronave.salute <100){
+                astronave.curaTutti();
+            }
+        }
+                
+    }
+
+    void gestisciEvento(Evento randomEvent) {
+        if (randomEvent == Asteroidi ){
+            Flotta flotta.campoAsteoidi();
+        }
+    }
     
     
     

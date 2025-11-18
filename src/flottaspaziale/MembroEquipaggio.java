@@ -19,8 +19,8 @@ public class MembroEquipaggio {
     }
     // costruttore non parametrizzato
     public MembroEquipaggio() {
-        this.nome= "Trivella";
-        this.ruolo="medico";
+        this.nome= "Marlon";
+        this.ruolo="ingegnere";
         this.salute = 100;
     }
     // set e get operatività
@@ -53,5 +53,17 @@ public class MembroEquipaggio {
     public int getSalute() {
         return salute;
     }
-
+    //controllo la presenza di un ingegnere
+    public boolean controllaIng(){
+        if(ruolo.equals("ingegnere")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //ripristino la vita di un membro dell'equipaggio
+    public int curaMembro() {
+        salute=100;
+        return salute;
+    }
 }

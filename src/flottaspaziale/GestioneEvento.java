@@ -14,19 +14,19 @@ import java.util.Random;
 public class GestioneEvento {
     
     enum Evento {
-        alieni, // attaccano le astronavi uccidendo l'equipaggio
-        cura, // ripristina la salute dei membri dell'equipaggio
+        Alieni, // attaccano le astronavi uccidendo l'equipaggio
+        IncontraGrottelli, // ripristina la salute dei membri dell'equipaggio   FINITO
         riparazioni, // ripara una nave
-        asteroidi, // danneggia la flotta (tutte le navi)
-        traditore // uccide membri del'equipaggio
+        Asteroidi, // danneggia la flotta (tutte le navi)    FINITO
+        Traditore, // uccide membri del'equipaggio
+        Avaria //danno al modulo motore   FINITO
         
     }
+
+   
     public Evento randomEvent(){
         int rnd = new Random().nextInt(Evento.values().length);
-        Evento eventoRandom = Evento.values()[rnd];
-        if(eventoRandom == asteroidi){
-            
-        }
+        Evento eventoRandom = Evento.values()[rnd];       
         return eventoRandom;
     }
     
