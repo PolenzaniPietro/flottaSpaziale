@@ -1,11 +1,12 @@
 
 package flottaspaziale;
 
+import flottaspaziale.GestioneEvento.Evento;
 import java.util.ArrayList;
 import java.util.Random;
 
 
-public class Flotta extends GestioneEvento{
+public class Flotta {
     private String eventi;
     private ArrayList<Astronave> astronavi;
 
@@ -56,10 +57,30 @@ public class Flotta extends GestioneEvento{
         }
                 
     }
-
+    public void traditore(){
+        int rnd = new Random().nextInt(astronavi.size());
+        Astronave a = astronavi.get(rnd);
+        a.gestisciTraditore();
+    }
+    public void alieni(){
+        int rnd = new Random().nextInt(1,2);
+        if(rnd == 1){
+            int rnd1 = new Random().nextInt(astronavi.size());
+            Astronave a = astronavi.remove(rnd1);
+        }
+        else{
+           // Astronave a = astronavi.
+                    
+        }
+               
+    }
+    
     void gestisciEvento(Evento randomEvent) {
-        if (randomEvent == Asteroidi ){
-            Flotta flotta.campoAsteoidi();
+        if (randomEvent == Evento.Alieni) {
+             
+        }
+        else if (randomEvent == Evento.Asteroidi) {
+             
         }
     }
     

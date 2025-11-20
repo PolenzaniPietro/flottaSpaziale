@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Astronave {
     private ArrayList <MembroEquipaggio> equipaggio;
-    private ArrayList <Modulo> modulo;
+    private ArrayList <Modulo> moduli;
     private String nome;
     public int salute;
     private boolean ingegnere;
@@ -28,20 +28,31 @@ public class Astronave {
         this.equipaggio.remove(m);
         return equipaggio;
     }
+    //aggiunta modulo
+    public ArrayList aggiungiModulo(Modulo modulo){
+        this.moduli.add(modulo);
+        return moduli;
+    }
+    //rimozione modulo
+    public ArrayList rimuoviModulo(Modulo modulo){
+        this.moduli.remove(modulo);
+        return moduli;
+    }
+    //controllo presenza ingegnere 
     public boolean checkIngMembers(){
         boolean i=true;
         for (MembroEquipaggio membro : equipaggio){
             i = membro.controllaIng();
             if ( i == true){
                 return i;
-            }
-                    
+            }                    
         }
         return i;
     }
+    //gestisco motore in avaria
     public boolean motoreInAvaria(){
         int rand = new Random().nextInt(3);
-        if(rand == 3){
+        if(rand == 2){
             return false;
         }
         else{
@@ -64,11 +75,16 @@ public class Astronave {
             }
             return salute;
         }
-
     public void curaTutti() {
         for (MembroEquipaggio membro : equipaggio){
             membro.curaMembro();
         }
+    }
+    public ArrayList <MembroEquipaggio> gestisciTraditore(){
+        for ( MembroEquipaggio membro : equipaggio){
+            membro.subisciDanno(10);
+        }
+        return equipaggio;
     }
 }
     

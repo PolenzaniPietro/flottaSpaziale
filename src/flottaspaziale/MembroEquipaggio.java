@@ -64,6 +64,23 @@ public class MembroEquipaggio {
     //ripristino la vita di un membro dell'equipaggio
     public int curaMembro() {
         salute=100;
+        setOperativita(true);
         return salute;
+    }
+
+    public int subisciDanno(int danno) {
+        if(salute-danno>0){
+            salute-=danno;
+        }
+        else {
+            salute=0;
+            setOperativita(false);
+        }
+        return salute;
+        
+    }
+
+    private void setOperativita(boolean b) {
+        this.operatività=b;
     }
 }
