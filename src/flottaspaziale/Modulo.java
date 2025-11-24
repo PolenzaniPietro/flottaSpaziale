@@ -5,7 +5,6 @@
  */
 package flottaspaziale;
 
-import java.util.Random;
 
 /**
  *
@@ -22,8 +21,9 @@ public class Modulo {
         this.integrità=true;
                 
     }
-    public Modulo(int salute) {
+    public Modulo(int salute, boolean integrita) {
         this.salute = salute;
+        this.integrità=integrita;
     }
     public int getSalute() {
         return salute;
@@ -32,5 +32,19 @@ public class Modulo {
     public void setSalute(int salute) {
         this.salute = salute;
     }
-    
+
+    public void setIntegrità(Boolean integrità) {
+        this.integrità = integrità;
+    }
+
+    public Boolean getIntegrità() {
+        return integrità;
+    }
+     @Override
+    public String toString(){
+        return " nome: " + modulo +"\n" + " salute: "+ salute + "\n" + " stato di integrità: " + integrità +"\n"; 
+    }
+    public void stampaModulo(){
+        System.out.println(this);
+    }
 }

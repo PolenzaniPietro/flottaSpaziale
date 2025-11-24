@@ -21,6 +21,15 @@ public class FlottaSpaziale {
         GestioneEvento generator = new GestioneEvento();
         
         flotta.gestisciEvento(generator.randomEvent());
+        Astronave a1 = new Astronave();
+        Modulo m1 = new Modulo();
+        MembroEquipaggio e1 = new MembroEquipaggio();
+        flotta.gestisciEvento(generator.randomEvent());
+        flotta.gestisciEvento(generator.randomEvent());
+        flotta.gestisciEvento(generator.randomEvent());
+        flotta.gestisciEvento(generator.randomEvent());
+        flotta.gestisciEvento(generator.randomEvent());
+        flotta.StampaStato();
         
     }
     

@@ -14,12 +14,12 @@ import java.util.Random;
 public class GestioneEvento {
     
     static public enum Evento {
-        Alieni, // attaccano le astronavi uccidendo l'equipaggio oppure rubano un'astronave    
+        Alieni, //  rubano un'astronave    // FINITO
         IncontraGrottelli, // ripristina la salute dei membri dell'equipaggio   FINITO
         Asteroidi, // danneggia la flotta (tutte le navi)    FINITO
         Traditore, // uccide membri del'equipaggio   SEMI-FINITO 
-        Avaria //danno al modulo motore   FINITO
-        
+        Avaria, //danno al modulo motore   FINITO
+        Epidemia // infettano l'equipaggio
     }
 
    

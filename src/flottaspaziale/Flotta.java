@@ -9,9 +9,11 @@ import java.util.Random;
 public class Flotta {
     private String eventi;
     private ArrayList<Astronave> astronavi;
+    private String nome;
 
-    public void setAstronavi(ArrayList<Astronave> astronavi) {
+    public void setAstronavi(ArrayList<Astronave> astronavi, String nome) {
         this.astronavi = astronavi;
+        this.nome= nome;
     }
     
     public ArrayList<Astronave> getAstronavi() {
@@ -26,9 +28,9 @@ public class Flotta {
         return astronavi;
     }
     // gestione asteroidi
-    public void campoAsteoidi(){
+    public void campoAsteroidi(){
         for( Astronave astronave: astronavi ){            
-            if(astronave.subisciDanno()==0){
+            if(astronave.asteroide()==0){
                 astronavi.remove(astronave);
             }
         }
@@ -39,23 +41,34 @@ public class Flotta {
         Astronave a = astronavi.get(rnd);
         if (a.checkIngMembers() == true) {
             if(!a.motoreInAvaria()){
-                this.rimuoviAstronave(a);
+                this.astronavi.remove(astronavi.get(rnd));
+                System.out.println("UN'ASTRONAVE HA COLPITO UN ASTEDOIDE ED E' STATA DISTRUTTA");
             }
         }
         else
         {
-            this.rimuoviAstronave(a);
+           this.astronavi.remove(astronavi.get(rnd));
+           System.out.println("UN'ASTRONAVE HA COLPITO UN ASTEDOIDE ED E' STATA DISTRUTTA");
         }
         
+    }
+    public void epidemia(){
+        int rnd = new Random().nextInt (astronavi.size());
+        Astronave a = astronavi.get(rnd);
+        if(a.checkMedicoMembers()){
+            a.malattiaConMedico();
+        }
+        else {
+            a.danneggiaTutti(30);  
+            System.out.println("UNA MALATTIA HA COLPITO LA NAVE DANNEGGIANDO TUTTI I MEMBRI");
+        }
     }
     // gestione cura
     public void cura(){
         for( Astronave astronave: astronavi ){
-            if(astronave.salute <100){
-                astronave.curaTutti();
-            }
-        }
-                
+            astronave.curaTutti();
+            System.out.println(" IL GRANDE GROTTELLI HA CURATO TUTTI I MEMBRI DELL'EQUIPAGGIO");    
+        }    
     }
     public void traditore(){
         int rnd = new Random().nextInt(astronavi.size());
@@ -63,28 +76,42 @@ public class Flotta {
         a.gestisciTraditore();
     }
     public void alieni(){
-        int rnd = new Random().nextInt(1,2);
-        if(rnd == 1){
             int rnd1 = new Random().nextInt(astronavi.size());
-            Astronave a = astronavi.remove(rnd1);
+            astronavi.remove(astronavi.get(rnd1));
+            System.out.println("GLI ALIENI HANNO RUBATO UN'ASTRONAVE!!");
         }
-        else{
-           // Astronave a = astronavi.
-                    
-        }
-               
-    }
     
-    void gestisciEvento(Evento randomEvent) {
+    public void gestisciEvento(Evento randomEvent) {
+        Flotta f = new Flotta();
         if (randomEvent == Evento.Alieni) {
-             
+             f.alieni();
         }
         else if (randomEvent == Evento.Asteroidi) {
              
+             f.campoAsteroidi();
+        }
+        else if (randomEvent == Evento.Avaria) {
+             f.avariaMotore();
+        }
+        else if (randomEvent == Evento.IncontraGrottelli) {
+             f.cura();
+        }
+        else if (randomEvent == Evento.Traditore) {
+             f.traditore();
+        }   
+        else if (randomEvent == Evento.Epidemia){
+             f.epidemia();
         }
     }
+    @Override
+    public String toString(){
+        return "nome: " + nome ;
+    }
     
-    
-    
+    public void StampaStato(){
+    System.out.println(this);
+    for( Astronave astronave: astronavi ){
+        astronave.stampaAstronave();
+    }
+    }
 }
-

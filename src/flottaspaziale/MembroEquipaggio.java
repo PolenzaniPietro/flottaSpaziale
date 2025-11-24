@@ -11,18 +11,26 @@ public class MembroEquipaggio {
     private String ruolo;
     private int salute;
     private Boolean operatività = true;
+    private int forza;
      // costruttore parametrizzato
-    public MembroEquipaggio(String nome, String ruolo, int salute){
+    public MembroEquipaggio(String nome, String ruolo, int salute, int forza){
         this.nome=nome;
         this.ruolo=ruolo;
         this.salute=salute;
+        this.forza=forza;
     }
     // costruttore non parametrizzato
     public MembroEquipaggio() {
         this.nome= "Marlon";
         this.ruolo="ingegnere";
         this.salute = 100;
+        this.forza = 10;
     }
+
+    public int getForza() {
+        return forza;
+    }
+    
     // set e get operatività
     public void setOperatività(Boolean operatività) {
         this.operatività = operatività;
@@ -33,12 +41,7 @@ public class MembroEquipaggio {
     }
     
     // set e get nome
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+   
     // set e get ruolo
     public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
@@ -61,26 +64,41 @@ public class MembroEquipaggio {
             return false;
         }
     }
-    //ripristino la vita di un membro dell'equipaggio
-    public int curaMembro() {
-        salute=100;
-        setOperativita(true);
-        return salute;
+    
+    public boolean controllaMed(){
+        if(ruolo.equals("medico")){
+            return true;
+        }else{
+            return false;
+        }
     }
+    
 
     public int subisciDanno(int danno) {
         if(salute-danno>0){
             salute-=danno;
+            System.out.println(" IL MEMBRO " + nome + " HA SUBITO " + danno + " DANNO");
         }
         else {
             salute=0;
-            setOperativita(false);
         }
         return salute;
         
     }
 
-    private void setOperativita(boolean b) {
+    public void setOperativita(boolean b) {
         this.operatività=b;
+    }
+    public void scriviEquipaggio(){
+        MembroEquipaggio a = new MembroEquipaggio();
+        System.out.println(a);
+    }
+    
+    @Override
+    public String toString(){
+        return " nome: " + nome + "\n" + " ruolo: " + ruolo + "\n" + " salute: " + salute + "\n" + " forza: " + forza;
+    }
+    public void stampaMembro(){
+        System.out.println(this);
     }
 }
