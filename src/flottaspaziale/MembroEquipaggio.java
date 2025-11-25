@@ -96,9 +96,6 @@ public class MembroEquipaggio {
     
     @Override
     public String toString(){
-        return " nome: " + nome + "\n" + " ruolo: " + ruolo + "\n" + " salute: " + salute + "\n" + " forza: " + forza;
-    }
-    public void stampaMembro(){
-        System.out.println(this);
+        return " nome membro: " + nome + "\n" + " ruolo: " + ruolo + "\n" + " salute: " + salute + "\n" + " forza: " + forza;
     }
 }

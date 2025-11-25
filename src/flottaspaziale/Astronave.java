@@ -18,6 +18,23 @@ public class Astronave {
     private String nome;
     public int salute;
     // aggiunta membri dell equipaggio
+
+    public Astronave(String nome, int salute) {
+        this.nome = nome;
+        this.salute = salute;
+        this.moduli= new ArrayList <Modulo>();
+        this.equipaggio= new ArrayList <MembroEquipaggio>();
+
+    }
+
+    public Astronave() {
+        this.nome = "nave";
+        this.salute = 100;
+        this.moduli= new ArrayList <Modulo>();
+        this.equipaggio= new ArrayList <MembroEquipaggio>();
+    }
+    
+    
     public ArrayList aggiungiMembro(MembroEquipaggio m){
         this.equipaggio.add(m);
         return equipaggio;
@@ -30,12 +47,12 @@ public class Astronave {
     //aggiunta modulo
     public ArrayList aggiungiModulo(Modulo modulo){
         this.moduli.add(modulo);
-        return moduli;
+        return this.moduli;
     }
     //rimozione modulo
     public ArrayList rimuoviModulo(Modulo modulo){
         this.moduli.remove(modulo);
-        return moduli;
+        return this.moduli;
     }
     //controllo presenza ingegnere 
     public boolean checkIngMembers(){
@@ -69,12 +86,12 @@ public class Astronave {
         }
     }
     public ArrayList malattiaConMedico(){
-        for (MembroEquipaggio membro : equipaggio){
+for (MembroEquipaggio membro : equipaggio){
         int rand = new Random().nextInt(10);
         if(rand> 7){
             equipaggio.remove(membro);
-        }
-        }
+                    }
+                }                 
         return equipaggio;
     }
     public String getNome() {
@@ -137,15 +154,15 @@ public class Astronave {
     }
     @Override
     public String toString(){
-        return "nome: " + nome + "\n" + " salute: " + salute;
+        return "nome astronave: " + nome + "\n" + " salute: " + salute;
     }
     public void stampaAstronave(){
         System.out.println(this);
         for ( MembroEquipaggio membro : equipaggio){
-            System.out.println(stampaMembro());
+            System.out.println(membro);
         }
         for ( Modulo m : moduli){
-            System.out.println(stampaModulo());
+            System.out.println(m);
         }
     }
 }

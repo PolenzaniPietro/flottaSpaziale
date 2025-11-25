@@ -44,7 +44,5 @@ public class Modulo {
     public String toString(){
         return " nome: " + modulo +"\n" + " salute: "+ salute + "\n" + " stato di integrità: " + integrità +"\n"; 
     }
-    public void stampaModulo(){
-        System.out.println(this);
-    }
+   
 }

@@ -11,10 +11,16 @@ public class Flotta {
     private ArrayList<Astronave> astronavi;
     private String nome;
 
-    public void setAstronavi(ArrayList<Astronave> astronavi, String nome) {
-        this.astronavi = astronavi;
-        this.nome= nome;
+    public Flotta(String nome) {
+        this.nome = nome;
+        this.astronavi= new ArrayList<>();
     }
+    public Flotta() {
+        this.nome = "flotta";
+        this.astronavi= new ArrayList<>();
+    }
+
+
     
     public ArrayList<Astronave> getAstronavi() {
         return astronavi;
@@ -37,6 +43,9 @@ public class Flotta {
     }
     // gestione motore
     public void avariaMotore(){
+        if (astronavi==null ||astronavi.size()<=0)
+            return;
+        
         int rnd = new Random().nextInt(astronavi.size());
         Astronave a = astronavi.get(rnd);
         if (a.checkIngMembers() == true) {
@@ -53,6 +62,9 @@ public class Flotta {
         
     }
     public void epidemia(){
+        if (astronavi==null ||astronavi.size()<=0)
+            return;
+        
         int rnd = new Random().nextInt (astronavi.size());
         Astronave a = astronavi.get(rnd);
         if(a.checkMedicoMembers()){
@@ -71,47 +83,52 @@ public class Flotta {
         }    
     }
     public void traditore(){
+        if (astronavi==null ||astronavi.size()<=0)
+            return;
+        
         int rnd = new Random().nextInt(astronavi.size());
         Astronave a = astronavi.get(rnd);
         a.gestisciTraditore();
     }
     public void alieni(){
+        if (astronavi==null ||astronavi.size()<=0)
+            return;
+        
             int rnd1 = new Random().nextInt(astronavi.size());
             astronavi.remove(astronavi.get(rnd1));
             System.out.println("GLI ALIENI HANNO RUBATO UN'ASTRONAVE!!");
         }
     
     public void gestisciEvento(Evento randomEvent) {
-        Flotta f = new Flotta();
         if (randomEvent == Evento.Alieni) {
-             f.alieni();
+             this.alieni();
         }
         else if (randomEvent == Evento.Asteroidi) {
              
-             f.campoAsteroidi();
+             this.campoAsteroidi();
         }
         else if (randomEvent == Evento.Avaria) {
-             f.avariaMotore();
+             this.avariaMotore();
         }
         else if (randomEvent == Evento.IncontraGrottelli) {
-             f.cura();
+             this.cura();
         }
         else if (randomEvent == Evento.Traditore) {
-             f.traditore();
+             this.traditore();
         }   
         else if (randomEvent == Evento.Epidemia){
-             f.epidemia();
+             this.epidemia();
         }
     }
     @Override
     public String toString(){
         return "nome: " + nome ;
     }
-    
-    public void StampaStato(){
-    System.out.println(this);
-    for( Astronave astronave: astronavi ){
+    public void stampaStato(){
+        System.out.println(this);
+        for( Astronave astronave: astronavi ){
         astronave.stampaAstronave();
+        }
     }
-    }
+
 }
